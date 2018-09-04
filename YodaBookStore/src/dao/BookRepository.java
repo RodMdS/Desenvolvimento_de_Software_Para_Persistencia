@@ -1,10 +1,11 @@
 package dao;
 
 import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -25,25 +26,31 @@ public class BookRepository {
 		List<Book> stock = new ArrayList<Book>();
 
 		try {
-			InputStream is = new FileInputStream(BOOKSTOCK);
-			ObjectInputStream ois = new ObjectInputStream(is);
-
-			while(ois.read() != -1) stock.add((Book) ois.readObject());
+			FileInputStream is = new FileInputStream(BOOKSTOCK);
 			
-			ois.close();
-			is.close();
-			
-			return stock;
-		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("Something unexpected happened. Try again later.");
+			while(true) {
+				ObjectInputStream ois = new ObjectInputStream(is);
+				Book b = (Book) ois.readObject();
+				stock.add(b);
+				System.out.println(b);
+			}
+		}  catch (EOFException e2) {
+			//System.out.println(stock.size()); //return stock;
+		} catch (Exception e) {
+			//e.printStackTrace();
+			System.out.println("Something unexpected happened. Try again later. (stock)");
 		}
 
+		System.out.println(stock.size());
 		return stock;
 	}
-
+	
 	public boolean saveAll(List<Book> stock) {
 		try {
-			OutputStream os = new FileOutputStream(BOOKSTOCK, true);
+			File file = new File(BOOKSTOCK);
+			if(file.exists()) file.delete();
+			
+			FileOutputStream os = new FileOutputStream(BOOKSTOCK, true);
 			ObjectOutputStream oos = new ObjectOutputStream(os);
 
 			for(Book b : stock) oos.writeObject(b);
@@ -52,8 +59,9 @@ public class BookRepository {
 			os.close();
 
 			return true;
+			
 		} catch (IOException e) {
-			System.out.println("Something unexpected happened. Try again later.");
+			System.out.println("Something unexpected happened. Try again later. (SaveAll)");
 		}
 
 		return false;
@@ -61,6 +69,7 @@ public class BookRepository {
 
 	public boolean save(Book book) {
 		List<Book> stock = this.getBookStock();
+		
 		if(!stock.contains(book)) stock.add(book);
 		else {
 			for(Book b : stock) {
@@ -69,6 +78,7 @@ public class BookRepository {
 				}
 			}
 		}
+		
 		return this.saveAll(stock);
 	}
 

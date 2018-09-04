@@ -26,12 +26,13 @@ public class ControllerBookStore {
 	}
 	
 	public void checkBookStock() {
-		for(Book bk : br.getBookStock()){
-			System.out.println(bk.toString());
-		}
+//		for(Book bk : br.getBookStock()){
+//			System.out.println(bk.toString());
+//		}
+		br.getBookStock();
 	}
 	
-	public boolean addNewBooks(String bkName, float bkValue, int bkQuantity, String type) {
+	public boolean addNewBooks(int isbn, String bkName, float bkValue, int bkQuantity, String type) {
 		float aux = bs.getTotalMoney() - (bkValue * bkQuantity);
 		if(aux >= 0){
 			List<Book> stock = br.getBookStock();
@@ -42,13 +43,9 @@ public class ControllerBookStore {
 					return br.saveAll(stock);
 				}
 			}
-			if(type.equals("Adventure")){
-				br.save(new AdventureBook(bkName, bkValue, bkQuantity)); //bs.getBookStock().add(new AdventureBook(bkName, bkValue, bkQuantity));
-			}else if(type.equals("Drama")){
-				br.save(new DramaBook(bkName, bkValue, bkQuantity)); //bs.getBookStock().add(new DramaBook(bkName, bkValue, bkQuantity));
-			}else{
-				br.save(new ComedyBook(bkName, bkValue, bkQuantity)); //bs.getBookStock().add(new ComedyBook(bkName, bkValue, bkQuantity));
-			}
+			if(type.equals("Adventure")) br.save(new AdventureBook(isbn, bkName, bkValue, bkQuantity));
+			else if(type.equals("Drama")) br.save(new DramaBook(isbn, bkName, bkValue, bkQuantity));
+			else br.save(new ComedyBook(isbn, bkName, bkValue, bkQuantity));
 			
 			bs.setTotalMoney(aux);
 			return true;

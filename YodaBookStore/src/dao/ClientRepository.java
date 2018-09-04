@@ -2,6 +2,7 @@ package dao;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,10 +54,7 @@ public class ClientRepository {
 			OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
 			BufferedWriter bw = new BufferedWriter(osw);
 			
-			for(Client c : clients) {
-				bw.write(c.toString());
-				bw.newLine();
-			}
+			for(Client c : clients) bw.write(c.toString());
 			
 			bw.close();
 			osw.close();
@@ -84,15 +82,28 @@ public class ClientRepository {
 		List<Client> clients = this.getClients();
 		
 		if(!clients.contains(client)) clients.add(client);
-		else return false;
+		else {
+			System.out.println("Client already registered.");
+			return false;
+		}
 		
 		return (this.addAll(clients));
 	}
 	
 	public boolean removeCLient(String cpf) {
 		List<Client> clients = this.getClients();
-		Client toRemove = this.getClientByCPF(cpf);
-		clients.remove(toRemove);
+		
+		for(int i = 0; i < clients.size(); i++) {
+			if(this.getClientByCPF(cpf).getCpf().equals(clients.get(i).getCpf())) {
+				clients.remove(i);
+			}
+		}
+		
+		File file = new File(CLIENTS);
+		if(file.exists()) {
+			file.delete();
+		}
+		
 		return this.addAll(clients);
 	}
 	

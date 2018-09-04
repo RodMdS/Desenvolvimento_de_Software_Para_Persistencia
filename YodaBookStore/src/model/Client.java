@@ -50,7 +50,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return cpf + "," + name + "," + address + "," + birthday.getTime();
+		return cpf + "," + name + "," + address + "," + birthday.getTime() + "\n";
 	}
 
 }

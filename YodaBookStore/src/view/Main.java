@@ -57,6 +57,8 @@ public class Main {
 			case 3: // add new books
 				System.out.println("Type it the type of books: ");
 				String type = scan.next();
+				System.out.println("Type it the isbn of the book: ");
+				int isbn = scan.nextInt();
 				System.out.println("Type it the name of the book: ");
 				String bkName = scan.next();
 				System.out.println("Type it the price of this book: ");
@@ -64,7 +66,7 @@ public class Main {
 				System.out.println("Type it the quantity of this book: ");
 				int bkQuantity = scan.nextInt();
 
-				if(cbs.addNewBooks(bkName, bkValue, bkQuantity, type))
+				if(cbs.addNewBooks(isbn, bkName, bkValue, bkQuantity, type))
 					System.out.println("Purchased successfully.\n");
 				else System.out.println("Purchase made unsuccessful.\n");
 

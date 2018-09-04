@@ -8,8 +8,8 @@ public class AdventureBook extends Book {
 	private static final long serialVersionUID = 1L;
 	private List<String> illustrations;
 
-	public AdventureBook(String name, float value, int qttStock) {
-		super(name, value, qttStock);
+	public AdventureBook(int isbn, String name, float value, int qttStock) {
+		super(isbn, name, value, qttStock);
 		this.illustrations = new ArrayList<String>();
 	}
 

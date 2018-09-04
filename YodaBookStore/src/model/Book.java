@@ -6,15 +6,13 @@ public abstract class Book implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static int ID = 0;
 	private int isbn;
 	private String name;
 	private float value;
 	private int qttStock;
 	
-	public Book(String name, float value, int qttStock){
-		Book.ID++;
-		this.isbn = ID;
+	public Book(int isbn, String name, float value, int qttStock){
+		this.isbn = isbn;
 		this.name = name;
 		this.value = value;
 		this.qttStock = qttStock;
@@ -51,11 +49,12 @@ public abstract class Book implements Serializable {
 	public void setQttStock(int qttStock) {
 		this.qttStock = qttStock;
 	}
-	
-	public String toString(){
-		return this.getIsbn() + "," 
-				+ this.getName() + "," 
-				+ this.getValue() + ","
-				+ this.getQttStock();
+
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", name=" + name + ", value=" + value + ", qttStock=" + qttStock + "]";
 	}
+	
+	
+	
 }
