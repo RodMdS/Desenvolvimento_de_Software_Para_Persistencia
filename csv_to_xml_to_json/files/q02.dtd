@@ -1,0 +1,66 @@
+<!ELEMENT ocorrencias (ocorrencia+)>
+<!ELEMENT ocorrencia (ocorrencia_classificacao, ocorrencia_tipo, ocorrencia_tipo_categoria, ocorrencia_tipo_icao, ocorrencia_latitude, ocorrencia_longitude, ocorrencia_cidade, ocorrencia_uf, ocorrencia_pais, ocorrencia_aerodromo, ocorrencia_dia, ocorrencia_horario, investigacao_aeronave_liberada, investigacao_status, divulgacao_relatorio_numero, divulgacao_relatorio_publicado, divulgacao_dia_publicacao, total_recomendacoes, total_aeronaves_envolvidas, ocorrencia_saida_pista, ocorrencia_dia_extracao, aeronave, recomendacao, fator_contribuinte)>
+<!ATTLIST ocorrencia codigo CDATA #REQUIRED>
+<!ELEMENT ocorrencia_classificacao (#PCDATA)>
+<!ELEMENT ocorrencia_tipo (#PCDATA)>
+<!ELEMENT ocorrencia_tipo_categoria (#PCDATA)>
+<!ELEMENT ocorrencia_tipo_icao (#PCDATA)>
+<!ELEMENT ocorrencia_latitude (#PCDATA)>
+<!ELEMENT ocorrencia_longitude (#PCDATA)>
+<!ELEMENT ocorrencia_cidade (#PCDATA)>
+<!ELEMENT ocorrencia_uf (#PCDATA)>
+<!ELEMENT ocorrencia_pais (#PCDATA)>
+<!ELEMENT ocorrencia_aerodromo (#PCDATA)>
+<!ELEMENT ocorrencia_dia (#PCDATA)>
+<!ELEMENT ocorrencia_horario (#PCDATA)>
+<!ELEMENT investigacao_aeronave_liberada (#PCDATA)>
+<!ELEMENT investigacao_status (#PCDATA)>
+<!ELEMENT divulgacao_relatorio_numero (#PCDATA)>
+<!ELEMENT divulgacao_relatorio_publicado (#PCDATA)>
+<!ELEMENT divulgacao_dia_publicacao (#PCDATA)>
+<!ELEMENT total_recomendacoes (#PCDATA)>
+<!ELEMENT total_aeronaves_envolvidas (#PCDATA)>
+<!ELEMENT ocorrencia_saida_pista (#PCDATA)>
+<!ELEMENT ocorrencia_dia_extracao (#PCDATA)>
+<!ELEMENT aeronave (aeronave_operador_categoria, aeronave_tipo_veiculo, aeronave_fabricante, aeronave_modelo, aeronave_tipo_icao, aeronave_motor_tipo, aeronave_motor_quantidade, aeronave_pmd, aeronave_pmd_categoria, aeronave_assentos, aeronave_ano_fabricacao, aeronave_pais_fabricante, aeronave_pais_registro, aeronave_registro_categoria, aeronave_registro_segmento, aeronave_voo_origem, aeronave_voo_destino, aeronave_fase_operacao, aeronave_fase_operacao_icao, aeronave_tipo_operacao, aeronave_nivel_dano, total_fatalidades, aeronave_dia_extracao)>
+<!ATTLIST aeronave aeronave_matricula CDATA #REQUIRED>
+<!ELEMENT aeronave_operador_categoria (#PCDATA)>
+<!ELEMENT aeronave_tipo_veiculo (#PCDATA)>
+<!ELEMENT aeronave_fabricante (#PCDATA)>
+<!ELEMENT aeronave_modelo (#PCDATA)>
+<!ELEMENT aeronave_tipo_icao (#PCDATA)>
+<!ELEMENT aeronave_motor_tipo (#PCDATA)>
+<!ELEMENT aeronave_motor_quantidade (#PCDATA)>
+<!ELEMENT aeronave_pmd (#PCDATA)>
+<!ELEMENT aeronave_pmd_categoria (#PCDATA)>
+<!ELEMENT aeronave_assentos (#PCDATA)>
+<!ELEMENT aeronave_ano_fabricacao (#PCDATA)>
+<!ELEMENT aeronave_pais_fabricante (#PCDATA)>
+<!ELEMENT aeronave_pais_registro (#PCDATA)>
+<!ELEMENT aeronave_registro_categoria (#PCDATA)>
+<!ELEMENT aeronave_registro_segmento (#PCDATA)>
+<!ELEMENT aeronave_voo_origem (#PCDATA)>
+<!ELEMENT aeronave_voo_destino (#PCDATA)>
+<!ELEMENT aeronave_fase_operacao (#PCDATA)>
+<!ELEMENT aeronave_fase_operacao_icao (#PCDATA)>
+<!ELEMENT aeronave_tipo_operacao (#PCDATA)>
+<!ELEMENT aeronave_nivel_dano (#PCDATA)>
+<!ELEMENT total_fatalidades (#PCDATA)>
+<!ELEMENT aeronave_dia_extracao (#PCDATA)>
+<!ELEMENT recomendacao (recomendacao_dia_assinatura, recomendacao_dia_encaminhamento, recomendacao_feedback, recomendacao_conteudo, recomendacao_status, recomendacao_destinatario_sigla, recomendacao_destinatario_nome, dia_extracao_recomendacao)>
+<!ATTLIST recomendacao recomendacao_numero CDATA #IMPLIED>
+<!ELEMENT recomendacao_dia_assinatura (#PCDATA)>
+<!ELEMENT recomendacao_dia_encaminhamento (#PCDATA)>
+<!ELEMENT recomendacao_feedback (#PCDATA)>
+<!ELEMENT recomendacao_conteudo (#PCDATA)>
+<!ELEMENT recomendacao_status (#PCDATA)>
+<!ELEMENT recomendacao_destinatario_sigla (#PCDATA)>
+<!ELEMENT recomendacao_destinatario_nome (#PCDATA)>
+<!ELEMENT dia_extracao_recomendacao (#PCDATA)>
+<!ELEMENT fator_contribuinte (fator_aspecto, fator_condicionante, fator_area, fator_detalhe_fator, fator_dia_extracao)>
+<!ATTLIST fator_contribuinte fator_nome CDATA #IMPLIED>
+<!ELEMENT fator_aspecto (#PCDATA)>
+<!ELEMENT fator_condicionante (#PCDATA)>
+<!ELEMENT fator_area (#PCDATA)>
+<!ELEMENT fator_detalhe_fator (#PCDATA)>
+<!ELEMENT fator_dia_extracao (#PCDATA)>
